@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feliz Cumpleaños</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffe4ec;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #d63384;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 3.5em;
+      margin-bottom: 0.3em;
+    }
+
+    p {
+      font-size: 2em;
+      margin-top: 0;
+    }
+
+    .btn-sorpresa {
+      margin-top: 30px;
+      padding: 15px 30px;
+      background-color: #f78fb3;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-sorpresa:hover {
+      transform: scale(1.05);
+    }
+
+    /* Corazones cayendo */
+    .heart {
+      position: fixed;
+      top: -50px;
+      font-size: 30px;
+      color: #ff4d88;
+      animation: fall linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(120vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <h1>Feliz cumpleaños, mi nena hermosaaaaa</h1>
+    <p>Te amo mucho mucho mucho muchote mi principessa linda</p>
+    <button class="btn-sorpresa" onclick="window.location.href='flores.html'">...</button>
+  </div>
+
+  <!-- Corazones animados -->
+  <script>
+    const colors = ['#ff4d88', '#ff99cc', '#ff66a3', '#ffb3d9', '#ff1a75'];
+    const numHearts = 25;
+
+    for (let i = 0; i < numHearts; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = '❤️';
+      heart.style.left = `${Math.random() * 100}vw`;
+      heart.style.fontSize = `${20 + Math.random() * 20}px`;
+      heart.style.animationDuration = `${5 + Math.random() * 5}s`;
+      heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+      document.body.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>

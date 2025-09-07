@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Flores para ti</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffe4ec;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    h2 {
+      color: #c9184a;
+      margin-bottom: 20px;
+      font-size: 2.8em;
+      user-select: none;
+    }
+
+    #defaultCanvas0 {
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(214, 51, 132, 0.3);
+    }
+
+    .btn-abrir {
+      margin-top: 20px;
+      padding: 15px 40px;
+      background-color: #f78fb3;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      user-select: none;
+      box-shadow: 0 4px 12px rgba(247, 143, 179, 0.6);
+    }
+
+    .btn-abrir:hover {
+      transform: scale(1.05);
+      background-color: #d63384;
+      box-shadow: 0 6px 18px rgba(214, 51, 132, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <h2>Una carta para ti...</h2>
+
+  <!-- p5.js -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
+  <script>
+    let t = 0;
+    const a = 180;  // Tamaño mayor (antes 120)
+    const k = 6;    // Número de pétalos
+
+    function setup() {
+      createCanvas(500, 500);
+      background('#ffe4ec');
+      stroke('#d63384');
+      strokeWeight(3);
+      noFill();
+      angleMode(RADIANS);
+      frameRate(60);
+    }
+
+    function draw() {
+      background('#ffe4ec');  // Limpio el fondo en cada frame para que solo se vea la flor actual
+      translate(width / 2, height / 2);
+
+      beginShape();
+      for (let theta = 0; theta < t; theta += 0.01) {
+        let r = a * cos(k * theta);
+        let x = r * cos(theta);
+        let y = r * sin(theta);
+        vertex(x, y);
+      }
+      endShape();
+
+      if (t < TWO_PI) {
+        t += 0.02;  // velocidad del dibujo: un poco más rápido
+      } else {
+        noLoop();  // Para de dibujar cuando termina la flor completa
+      }
+    }
+  </script>
+
+  <button class="btn-abrir" onclick="window.location.href='carta.html'">Abrir</button>
+</body>
+</html>

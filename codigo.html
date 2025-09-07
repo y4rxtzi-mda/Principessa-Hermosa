@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Introduce el código</title>
+  <style>
+    body {
+      background: #ffe4ec;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 20px;
+      user-select: none;
+    }
+
+    h2 {
+      color: #c9184a;
+      margin-bottom: 20px;
+      font-size: 2em;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 30px;
+      text-align: center;
+      max-width: 300px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 1.2em;
+      border-radius: 10px;
+      border: 2px solid #c9184a;
+      text-align: center;
+      width: 200px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 1.2em;
+      border-radius: 10px;
+      border: none;
+      background-color: #f78fb3;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #d63384;
+    }
+
+    #mensaje-error {
+      color: #c9184a;
+      margin-top: 15px;
+      height: 1.5em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Introduce la contraseña</h2>
+  <p>
+    Pista: Es una fecha,  Pista: Fue el mejor dia de mi vida,  Pista: son 6 numeros
+  </p>
+  <input id="inputCodigo" type="text" placeholder="Escribe aquí la clave" maxlength="6" />
+  <button id="btnEnviar">Enviar</button>
+  <div id="mensaje-error"></div>
+
+  <script>
+    const btnEnviar = document.getElementById('btnEnviar');
+    const inputCodigo = document.getElementById('inputCodigo');
+    const mensajeError = document.getElementById('mensaje-error');
+    const claveCorrecta = '241223';
+    let vidas = 3;
+
+    btnEnviar.addEventListener('click', () => {
+      const valor = inputCodigo.value.trim();
+      if (valor === claveCorrecta) {
+        alert('Clave correcta. Regresarás para elegir un color otra vez.');
+        window.location.href = 'seleccion_corazon.html';
+      } else {
+        vidas--;
+        if (vidas > 0) {
+          mensajeError.textContent = `Clave incorrecta. Te quedan ${vidas} vidas.`;
+          inputCodigo.value = '';
+          inputCodigo.focus();
+        } else {
+          alert('No te quedan vidas. Regresarás al rompecabezas.');
+          window.location.href = 'rompecabezas.html'; // Cambia a tu página de rompecabezas real
+        }
+      }
+    });
+
+    // Para que Enter también funcione
+    inputCodigo.addEventListener('keydown', e => {
+      if (e.key === 'Enter') btnEnviar.click();
+    });
+  </script>
+</body>
+</html>

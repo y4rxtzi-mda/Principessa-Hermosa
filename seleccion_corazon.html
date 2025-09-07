@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Selecciona un corazón para salir</title>
+  <style>
+    body {
+      background: #ffe4ec;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 40px;
+      user-select: none;
+    }
+
+    h2 {
+      color: #c9184a;
+      margin-bottom: 30px;
+      font-size: 2.2em;
+    }
+
+    .corazones {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      max-width: 500px;
+      margin: 0 auto 40px;
+    }
+
+    .corazon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .corazon:hover {
+      transform: scale(1.2);
+    }
+
+    /* Colores de corazones */
+    .rojo    { background: #ff4d6d; }
+    .naranja { background: #ff914d; }
+    .amarillo{ background: #ffec4d; }
+    .verde   { background: #4dff72; }
+    .azul    { background: #4d88ff; } /* ESTE ES EL CORAZON CORRECTO */
+    .morado  { background: #b24dff; }
+    .rosa    { background: #ff4dd9; }
+    .cian    { background: #4dffec; }
+
+    #mensaje {
+      color: #c9184a;
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 20px;
+      height: 1.5em;
+    }
+  </style>
+</head>
+<body>
+  <h2>Selecciona un color para salir</h2>
+  <div class="corazones">
+    <div class="corazon rojo"    data-color="rojo"></div>
+    <div class="corazon naranja" data-color="naranja"></div>
+    <div class="corazon amarillo"data-color="amarillo"></div>
+    <div class="corazon verde"   data-color="verde"></div>
+    <div class="corazon azul"    data-color="azul"></div>
+    <div class="corazon morado"  data-color="morado"></div>
+    <div class="corazon rosa"    data-color="rosa"></div>
+    <div class="corazon cian"    data-color="cian"></div>
+  </div>
+
+  <div id="mensaje"></div>
+
+  <script>
+    const corazones = document.querySelectorAll('.corazon');
+    const mensaje = document.getElementById('mensaje');
+
+    corazones.forEach(corazon => {
+      corazon.addEventListener('click', () => {
+        if (corazon.dataset.color === 'azul') {
+          // Corazón correcto, ir al inicio (ejemplo index.html)
+          window.location.href = 'final.html';
+        } else {
+          // Incorrecto
+          mensaje.textContent = 'Incorrecto. Serás enviado a una clave con pista para intentarlo de nuevo.';
+          setTimeout(() => {
+            window.location.href = 'codigo.html';
+          }, 2000);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

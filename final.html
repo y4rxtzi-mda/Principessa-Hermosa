@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gracias por estar aquí 💖</title>
+  <style>
+    body {
+      background-color: #ffe4ec;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      height: 100vh;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    #mensajeFinal {
+      font-size: 1.8em;
+      color: #d6336c;
+      max-width: 800px;
+      margin-bottom: 50px;
+      white-space: pre-wrap;
+    }
+
+    .botones {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-nav {
+      background-color: #f78fb3;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 10px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-nav:hover {
+      background-color: #d6336c;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="mensajeFinal"></div>
+
+  <div class="botones" id="botones" style="display: none;">
+    <button class="btn-nav" onclick="location.href='index.html'">Volver al inicio</button>
+    <button class="btn-nav" onclick="location.href='carta.html'">Ir a la carta</button>
+    <button class="btn-nav" onclick="location.href='rompecabezas.html'">Volver al rompecabezas</button>
+  </div>
+
+  <script>
+    const mensaje = `
+Y llegaste al final mi niña linda, espero que te haya gusatdo esto, lo hice con mucho mucho amor para ti.
+Sabes que me encanta programar y te queria hacer algo, te amo mucho muchooo muchote mi niña hermosa, en realidad la palabra te amo se queda corta para lo que siento por ti, pero meno esto no es un final... es una pausa al programa. Tamoooooo feliz cumpleaños corazon 😊
+`;
+
+    const contenedor = document.getElementById('mensajeFinal');
+    const botones = document.getElementById('botones');
+
+    let i = 0;
+    function escribirMensaje() {
+      if (i < mensaje.length) {
+        contenedor.textContent += mensaje.charAt(i);
+        i++;
+        setTimeout(escribirMensaje, 50); // velocidad de escritura
+      } else {
+        // Mostrar botones al terminar
+        botones.style.display = 'flex';
+      }
+    }
+
+    // Iniciar animación de escritura
+    escribirMensaje();
+  </script>
+</body>
+</html>

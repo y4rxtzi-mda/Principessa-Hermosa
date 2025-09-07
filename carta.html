@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Carta para ti</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff0f5;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: auto;
+      position: relative;
+    }
+
+    .carta {
+      width: 80%;
+      max-width: 800px;
+      margin: 100px auto 0 auto;
+      font-size: 1.2em;
+      line-height: 1.6em;
+      color: #c9184a;
+      background-color: #ffffffd9;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      min-height: 300px;
+    }
+
+    .corazon {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      transform: rotate(45deg);
+      animation: flotar 6s infinite ease-in;
+      opacity: 0.6;
+    }
+
+    .corazon::before,
+    .corazon::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      border-radius: 50%;
+    }
+
+    .corazon::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .corazon::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes flotar {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(45deg);
+        opacity: 1;
+      }
+    }
+
+    .btn-sorpresa {
+      display: none;
+      margin: 40px auto;
+      padding: 15px 40px;
+      background-color: #f78fb3;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn-sorpresa:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Corazones flotantes -->
+  <script>
+    for (let i = 0; i < 30; i++) {
+      let corazon = document.createElement('div');
+      corazon.className = 'corazon';
+      corazon.style.left = Math.random() * 100 + 'vw';
+      corazon.style.animationDuration = (4 + Math.random() * 3) + 's';
+      corazon.style.opacity = Math.random();
+      document.body.appendChild(corazon);
+    }
+  </script>
+
+  <!-- Carta que se escribe sola -->
+  <div class="carta" id="carta"></div>
+
+  <!-- Botón de sorpresa final -->
+  <button class="btn-sorpresa" id="btnFinal" onclick="window.location.href='universo.html'">Sorpresa</button>
+
+  <script>
+    const texto = `
+    Hola mi niña linda, hoy no es un día cualquiera.. hoyyyy es un día muy especial porque es tu cumpleaños número 16, de verdad no sabes lo feliz que me hace poder estar contigo en días ashi, no tengo palabras exactas para describir todo lo que siento pero lo voy a intentar porque este momento es demasiado especial como para dejarlo pasar así como así, espero te la pases muy bien en tu día.💖
+No sabes lo feliz que me hace poder acompañarte en este momento, ojala ver tu sonrisa, tus ojitos, abrazarte y besarte demasiado demasiado, hoyyy mas que nunca necesito decirte lo muchoooo que te amo mi niña hermosa, lo orgullosa que estoy de ti mi niña linda y lo afortunada que me siento de tener a una chica tan genial, tan hermosa, tan única, tan inteligente porque si lo eres amor, de verdad me siento muy afortunada de tenerte en mi vida. 
+No eres solo mi novia, eres la persona que me hace sentir bien conmigo misma, la persona que me llena de paz, eres mi mejor amiga, mi compañera, eres todo mi mundo, eres la persona que me esta enseñando a amar con todo el corazón, me haces sentir cosas inexplicables, y eres la persona que me hizo confiar en mi cuando crei que era lo peor. Gracias por estar siempre conmigo, de verdad lo digo.. eres una persona increíble, con un corazón super hermoso, gracias gracias por todo.
+Me emociona pensar en todo lo que nos espera en un futuro, se que lo haremos juntas, y si no es conmigo se que lograras demasiadas cosas porque tienes un corazón muy noble, una mente brillante que se le ocurren demasiadas cosas jajaja, un sonrisa demasiado hermosa, y demasiados sueños por cumplir y que se que lograras cada uno.
+Cada día que pasa te amo mas que el anterior, cada día te admiro mas por tu forma de ser, por tu sensibilidad y por lo fuerte que eres. 💖
+Cumplir 16 no solo es cambiar el número, no solo es un día, es descubrir más cosas, del mundo y de ti, comenzar a construir el futuro que elijas y acercarte mas a tus sueños. Quisiera estar contigo en todo ese camino que te espera, poder apoyarte, felicitarte, decirte millones de veces lo orgullosa que me tienes, poder crecer juntas, estar contigo en las buenas y las malas, pero todo contigo amor.
+Gracias por permitirme estar contigo, gracias por cada uno de los momentos que pasamos juntas, por tus mensajes, por tu amor, tu paciencia, tu tiempo, por tus abrazos, por tus besos.. Por TODO. Gracias por confiar en mi y dejarme ser parte de tu vida.💖
+Hoy quiero desearte el cumpleaños mas bonito de todo el mundo, un dia lleno de amor, de sonrisas, de abrazos, de palabras que te hagan sentir especial, porque lo eres. 
+Ojala este nuevo año te traiga todo lo que deseas y sueñas, nunca pierdas el brillo que tienes, y recuerda que todo lo que te propongas lo vas a conseguir por más difícil que se vea, yo estaré ahí siempre para apoyarte, para felicitarte, para consolarte si lo necesitas, y obvio para recordarte siempre lo increíble que eres. Nunca dejes de soñar… 
+Me emociona demasiado pensar en todo lo que nos queda por vivir juntas, cada conversación, cada plan, cada dia juntas, se que vienen cosas buenas y mejores, y quiero vivirlas contigo. 
+Feliz cumpleaños principessa hermosa, Felices 16. 💖
+Nunca, nunca, nunca dudes de lo mucho que significas para mi, de lo mucho mucho que te amo, de lo mucho que me gustas, y de lo orgullosa que me siento de ti.
+Te amooooo demasiado demasiado mi amor, mucho muchote, con toda mi alma, con mi vida, te amare en todas las vidas, lo juro mi amor.💖
+Con muto amor… Yaris <3 💫
+
+     
+    `;
+
+    const carta = document.getElementById('carta');
+    const btn = document.getElementById('btnFinal');
+    let i = 0;
+
+    function escribirTexto() {
+      if (i < texto.length) {
+        carta.innerHTML += texto.charAt(i) === '\n' ? '<br>' : texto.charAt(i);
+        i++;
+        setTimeout(escribirTexto, 40); // Velocidad de escritura
+      } else {
+        btn.style.display = 'block'; // Mostrar botón al final
+      }
+    }
+
+    escribirTexto();
+  </script>
+</body>
+</html>
