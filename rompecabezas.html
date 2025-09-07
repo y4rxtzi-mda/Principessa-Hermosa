@@ -163,6 +163,82 @@
 
   resetBtn.addEventListener('click', () => {
     createPuzzle();
+  });let dragged = null;
+  let offsetX, offsetY;
+  
+
+  function startDrag(e) {
+    if(!e.target.classList.contains('piece')) return;
+    e.preventDefault();
+    dragged = e.target;
+    const rect = dragged.getBoundingClientRect();
+
+    if(e.type === 'touchstart') {
+      offsetX = e.touches[0].clientX - rect.left;
+      offsetY = e.touches[0].clientY - rect.top;
+    } else {
+      offsetX = e.clientX - rect.left;
+      offsetY = e.clientY - rect.top;
+    }
+
+    dragged.style.position = 'absolute';
+    dragged.style.zIndex = 1000;
+  }
+
+  function drag(e) {
+    if (!dragged) return;
+    e.preventDefault();
+
+    let x, y;
+    if(e.type === 'touchmove') {
+      x = e.touches[0].clientX - offsetX;
+      y = e.touches[0].clientY - offsetY;
+    } else {
+      x = e.clientX - offsetX;
+      y = e.clientY - offsetY;
+    }
+
+    dragged.style.left = x + 'px';
+    dragged.style.top = y + 'px';
+  }
+
+  function endDrag(e) {
+    if (!dragged) return;
+
+    // Ajustar posición relativa de la pieza al soltar
+    dragged.style.position = 'relative';
+    dragged.style.left = '';
+    dragged.style.top = '';
+    dragged.style.zIndex = '';
+
+    dragged = null;
+    checkWin();
+  }
+
+  // Eventos para PC
+  puzzle.addEventListener('mousedown', startDrag);
+  puzzle.addEventListener('mousemove', drag);
+  puzzle.addEventListener('mouseup', endDrag);
+
+  // Eventos para móviles
+  puzzle.addEventListener('touchstart', startDrag);
+  puzzle.addEventListener('touchmove', drag);
+  puzzle.addEventListener('touchend', endDrag);
+
+  // ---- FIN ARRASTRE ----
+
+  function checkWin() {
+    const currentOrder = Array.from(puzzle.children).map(piece => piece.getAttribute('data-index'));
+    for(let i = 0; i < totalPieces; i++) {
+      if(currentOrder[i] != i) return;
+    }
+    // Cuando gana, mostrar mensaje y botón siguiente
+    message.textContent = 'Perfecto amor, lo lograste ❤️';
+    nextBtn.style.display = 'inline-block';
+  }
+
+  resetBtn.addEventListener('click', () => {
+    createPuzzle();
   });
 
   nextBtn.addEventListener('click', () => {
@@ -174,3 +250,15 @@
 
 </body>
 </html>
+
+
+  nextBtn.addEventListener('click', () => {
+    window.location.href = 'seleccion_corazon.html'; // Cambia esta ruta a donde quieras
+  });
+
+  createPuzzle();
+</script>
+
+</body>
+</html>
+
